@@ -17,14 +17,21 @@ function App() {
   // Listen for backend events
   useEffect(() => {
     socket.on("question", (data) => {
+      console.log("Received question:", data); // log for debugging
       setQuestionData(data);
       setTimer(15);
       setShowWinner(false);
     });
 
-    socket.on("votesUpdate", (data) => setQuestionData({ ...data }));
+    socket.on("votesUpdate", (data) => {
+      console.log("Votes updated:", data);
+      setQuestionData({ ...data });
+    });
 
-    socket.on("gameOver", () => setQuestionData(null));
+    socket.on("gameOver", () => {
+      console.log("Game over received");
+      setQuestionData(null);
+    });
 
     return () => {
       socket.off("question");
@@ -33,7 +40,7 @@ function App() {
     };
   }, []);
 
-  // Display winner (wrapped in useCallback so it can safely be used in useEffect)
+  // Display winner
   const displayWinner = useCallback(() => {
     if (!questionData) return;
 
@@ -55,9 +62,20 @@ function App() {
 
     const interval = setInterval(() => setTimer(t => t - 1), 1000);
     return () => clearInterval(interval);
-  }, [timer, questionData, showWinner, displayWinner]); // added displayWinner here
+  }, [timer, questionData, showWinner, displayWinner]);
 
-  // Next Question
+  // Auto-restart after Game Over
+  useEffect(() => {
+    if (questionData === null) {
+      const timeout = setTimeout(() => {
+        console.log("Restarting game...");
+        socket.emit("nextQuestion"); // request a new question from backend
+      }, 3000); // wait 3 seconds
+      return () => clearTimeout(timeout);
+    }
+  }, [questionData]);
+
+  // Next Question button
   const nextQuestion = () => {
     setShowWinner(false);
     setTimer(15);
@@ -72,6 +90,7 @@ function App() {
         <ul>
           {previousWinners.map((w, i) => <li key={i}>{w}</li>)}
         </ul>
+        <p>Restarting in 3 seconds...</p>
       </div>
     );
 
