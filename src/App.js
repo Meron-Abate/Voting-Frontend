@@ -2,7 +2,11 @@ import { useEffect, useState, useCallback } from "react";
 import { io } from "socket.io-client";
 import "./App.css";
 
-const socket = io("https://voting-backend.onrender.com");
+const socket = io("https://voting-backend-j0u5.onrender.com");
+
+// Optional: debug connection
+socket.on("connect", () => console.log("Socket connected!"));
+socket.on("connect_error", (err) => console.log("Socket connection error:", err));
 
 function App() {
   const [questionData, setQuestionData] = useState(null);
