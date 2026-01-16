@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import "./App.css";
 
 // Connect to your backend
-const socket = io("https://voting-backend.onrender.com"); // replace with your backend URL
+const socket = io("https://voting-backend-j0u5.onrender.com"); // replace with your backend URL
 
 function App() {
   // --- Roles and Host ---
