@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { io } from "socket.io-client";
 import "./App.css";
 
@@ -29,6 +29,17 @@ function App() {
     };
   }, []);
 
+  // Display winner (wrapped in useCallback so it can safely be used in useEffect)
+  const displayWinner = useCallback(() => {
+    if (!questionData) return;
+
+    const maxVotes = Math.max(...questionData.options.map(o => o.votes));
+    const winner = questionData.options.find(o => o.votes === maxVotes);
+    if (winner) setPreviousWinners(prev => [...prev, winner.name]);
+
+    setShowWinner(true);
+  }, [questionData]);
+
   // Countdown timer
   useEffect(() => {
     if (!questionData || showWinner) return;
@@ -40,18 +51,7 @@ function App() {
 
     const interval = setInterval(() => setTimer(t => t - 1), 1000);
     return () => clearInterval(interval);
-  }, [timer, questionData, showWinner]);
-
-  // Display winner
-  const displayWinner = () => {
-    if (!questionData) return;
-
-    const maxVotes = Math.max(...questionData.options.map(o => o.votes));
-    const winner = questionData.options.find(o => o.votes === maxVotes);
-    if (winner) setPreviousWinners(prev => [...prev, winner.name]);
-
-    setShowWinner(true);
-  };
+  }, [timer, questionData, showWinner, displayWinner]); // added displayWinner here
 
   // Next Question
   const nextQuestion = () => {
