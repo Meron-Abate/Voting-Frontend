@@ -119,12 +119,11 @@ h3 {
    WINNER
 ================================ */
 .winner {
-  background: #9bf03a !important;   /* soft warm yellow */
-  color: #b7e942 !important;        /* golden brown text */
-  border: 2px solid #dcf56e;
+  background: #fff3c4 !important;
+  color: #7a5c00 !important;
+  border: 2px solid #f5d76e;
   font-weight: bold;
-  box-shadow: 0 0 18px rgba(138, 245, 68, 0.8);
-  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(245, 215, 110, 0.8) !important;
 }
 
 /* ===============================
