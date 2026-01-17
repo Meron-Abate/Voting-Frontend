@@ -119,11 +119,21 @@ h3 {
    WINNER
 ================================ */
 .winner {
-  background: #fff3c4 !important;
-  color: #7a5c00 !important;
+  background: #abfc4f !important;   /* soft warm yellow */
+  color: #e9bf42 !important;        /* golden brown text */
   border: 2px solid #f5d76e;
   font-weight: bold;
-  box-shadow: 0 0 18px rgba(245, 215, 110, 0.8) !important;
+  box-shadow: 0 0 18px rgba(245, 215, 110, 0.8);
+  transform: scale(1.08);
+}
+button {
+  outline: none;
+  box-shadow: none;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 /* ===============================
@@ -132,7 +142,7 @@ h3 {
 button:disabled {
   background-color: #ccc !important;
   border-color: #ccc !important;
-  color: #6fe979 !important;
+  color: #777 !important;
   cursor: not-allowed;
 }
 
