@@ -132,7 +132,7 @@ h3 {
 button:disabled {
   background-color: #ccc !important;
   border-color: #ccc !important;
-  color: #777 !important;
+  color: #6fe979 !important;
   cursor: not-allowed;
 }
 
