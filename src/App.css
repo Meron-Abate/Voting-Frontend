@@ -1,6 +1,7 @@
+/* Reset & body styling */
 body {
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, #c9e9ff, #ffdee9); /* Christmas soft tones */
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -8,42 +9,75 @@ body {
   align-items: center;
 }
 
+/* Main container styling */
 .container {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 40px 30px;
   border-radius: 25px;
   text-align: center;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
   width: 550px;
   max-width: 90%;
+  backdrop-filter: blur(6px);
 }
 
-h1 { font-size: 28px; margin-bottom: 15px; color: #333; }
-h2 { font-size: 26px; margin: 15px 0; color: #444; }
-h3 { font-size: 18px; margin: 10px 0; color: #666; }
+/* Headings */
+h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #2c2c2c;
+}
 
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  color: #333;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 12px 0;
+  color: #666;
+}
+
+/* Options container */
 .options {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 20px 0;
-  gap: 15px;
+  margin: 25px 0;
+  gap: 20px; /* increased spacing between buttons */
 }
 
+/* Option buttons */
 button {
   padding: 15px 25px;
   font-size: 16px;
   border: none;
-  border-radius: 15px;
+  border-radius: 12px;
   cursor: pointer;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   color: #333;
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  min-width: 120px; /* prevents squeezing on mobile */
 }
 
-button:hover { transform: scale(1.1); background-color: #e0e0e0; }
-button:disabled { background: #ccc; cursor: not-allowed; }
+button:hover {
+  background-color: #e7e7e7;
+  transform: translateY(-3px);
+}
 
+button:active {
+  background-color: #dcdcdc;
+  transform: scale(0.97);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Winner highlight */
 .winner {
   background: gold !important;
   color: black;
@@ -52,6 +86,7 @@ button:disabled { background: #ccc; cursor: not-allowed; }
   transform: scale(1.1);
 }
 
+/* Next Question button */
 .next-btn {
   padding: 15px 35px;
   margin-top: 25px;
@@ -61,10 +96,61 @@ button:disabled { background: #ccc; cursor: not-allowed; }
   color: white;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.next-btn:hover { transform: scale(1.05); background-color: #45a049; }
+.next-btn:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
 
-ul { list-style-type: none; padding-left: 0; }
-ul li { font-size: 16px; margin: 5px 0; color: #555; }
+/* PIN input form */
+.pin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* spacing between input + button */
+}
+
+/* PIN input styling */
+.pin-form input {
+  width: 80%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Submit PIN button */
+.pin-submit {
+  padding: 12px 35px;
+  font-size: 18px;
+  background-color: #ff790d;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.pin-submit:hover {
+  background-color: #e86d0b;
+  transform: translateY(-2px);
+}
+
+.pin-submit:active {
+  transform: scale(0.97);
+}
+
+/* Previous winners list */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  font-size: 16px;
+  margin: 7px 0;
+  color: #555;
+}
