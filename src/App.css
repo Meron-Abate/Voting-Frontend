@@ -1,7 +1,13 @@
-/* Reset & body styling */
+/* ===============================
+   Reset & Body
+================================ */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #c9e9ff, #ffdee9); /* Christmas soft tones */
+  background: linear-gradient(135deg, #c9e9ff, #ffdee9);
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -9,22 +15,25 @@ body {
   align-items: center;
 }
 
-/* Main container styling */
+/* ===============================
+   Main Container
+================================ */
 .container {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 40px 30px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.15);
   width: 550px;
   max-width: 90%;
-  backdrop-filter: blur(6px);
 }
 
-/* Headings */
+/* ===============================
+   Headings
+================================ */
 h1 {
   font-size: 28px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #2c2c2c;
 }
 
@@ -40,113 +49,132 @@ h3 {
   color: #666;
 }
 
-/* Options container */
-.options {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 25px 0;
-  gap: 20px; /* increased spacing between buttons */
-}
+/* ===============================
+   ROLE SELECTION BUTTONS
+   (no JS changes needed)
+================================ */
 
-/* Option buttons */
-button {
-  padding: 15px 25px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
+/* Only the FIRST screen buttons */
+.container > button {
+  margin: 12px;
+  padding: 16px 30px;
+  min-width: 160px;
+  font-size: 17px;
+  border-radius: 18px;
   cursor: pointer;
-  background-color: #f7f7f7;
-  color: #333;
-  transition: 0.2s ease-in-out;
-  min-width: 120px; /* prevents squeezing on mobile */
+
+  background-color: #fdf2f2;      /* light Christmas red */
+  color: #8b1e1e;
+  border: 2px solid #e8bcbc;
+
+  transition: all 0.25s ease;
 }
 
-button:hover {
-  background-color: #e7e7e7;
+/* Hover */
+.container > button:hover {
+  background-color: #ffe1e1;
   transform: translateY(-3px);
 }
 
-button:active {
-  background-color: #dcdcdc;
+/* Click */
+.container > button:active {
   transform: scale(0.97);
 }
 
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+/* ===============================
+   GAME OPTIONS (Voting Buttons)
+================================ */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 25px 0;
+  flex-wrap: wrap;
 }
 
-/* Winner highlight */
+.options button {
+  padding: 15px 25px;
+  font-size: 16px;
+  border-radius: 14px;
+  min-width: 140px;
+  cursor: pointer;
+
+  background-color: #e8f5e9;     /* light green */
+  color: #1b5e20;
+  border: 2px solid #c8e6c9;
+
+  transition: 0.2s ease-in-out;
+}
+
+.options button:hover {
+  background-color: #d0f0d4;
+  transform: translateY(-2px);
+}
+
+.options button:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   WINNER
+================================ */
 .winner {
   background: gold !important;
-  color: black;
+  color: black !important;
   font-weight: bold;
   box-shadow: 0 0 15px gold;
   transform: scale(1.1);
 }
 
-/* Next Question button */
+/* ===============================
+   DISABLED
+================================ */
+button:disabled {
+  background-color: #ccc !important;
+  border-color: #ccc !important;
+  color: #777 !important;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   NEXT QUESTION BUTTON
+================================ */
 .next-btn {
-  padding: 15px 35px;
+  padding: 15px 40px;
   margin-top: 25px;
   font-size: 18px;
-  border-radius: 20px;
-  background-color: #4caf50;
+  border-radius: 22px;
+  background-color: #2e7d32;   /* Christmas green */
   color: white;
   border: none;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease;
 }
 
 .next-btn:hover {
-  background-color: #43a047;
+  background-color: #256628;
   transform: scale(1.05);
 }
 
-/* PIN input form */
-.pin-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px; /* spacing between input + button */
-}
-
-/* PIN input styling */
-.pin-form input {
+/* ===============================
+   PIN INPUT SCREEN
+================================ */
+.container input {
   width: 80%;
   padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 18px;
   text-align: center;
+  border: 2px solid #c8e6c9;
+  margin-bottom: 20px;
 }
 
-/* Submit PIN button */
-.pin-submit {
-  padding: 12px 35px;
-  font-size: 18px;
-  background-color: #ff790d;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-}
-
-.pin-submit:hover {
-  background-color: #e86d0b;
-  transform: translateY(-2px);
-}
-
-.pin-submit:active {
-  transform: scale(0.97);
-}
-
-/* Previous winners list */
+/* ===============================
+   LIST
+================================ */
 ul {
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
 }
 
 ul li {
